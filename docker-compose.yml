@@ -13,6 +13,7 @@ services:
       - PORT=8888
       - NODE_OPTIONS=--openssl-legacy-provider
       - JWT_SECRET=mern-crm
+      - PUBLIC_SERVER_FILE="http://3.213.136.34:8888/"
 
     command: sh -c "npm run setup && npm run dev"
 
