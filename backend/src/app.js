@@ -20,7 +20,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: true,
+    origin: 'http://3.213.136.34',
     credentials: true,
   })
 );
@@ -40,6 +40,11 @@ app.use('/api', adminAuth.isValidAuthToken, coreApiRouter);
 app.use('/api', adminAuth.isValidAuthToken, erpApiRouter);
 app.use('/download', coreDownloadRouter);
 app.use('/public', corePublicRouter);
+
+//health check
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
 
 // If that above routes didnt work, we 404 them and forward to error handler
 app.use(errorHandlers.notFound);
