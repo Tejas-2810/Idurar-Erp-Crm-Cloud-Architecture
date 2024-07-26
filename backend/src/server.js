@@ -12,11 +12,10 @@ if (major < 20) {
 
 // import environmental variables from our variables.env file
 require('dotenv').config({ path: '.env' });
-require('dotenv').config({ path: '.env.local' });
+
 
 mongoose.connect(process.env.DATABASE);
 
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 mongoose.connection.on('error', (error) => {
   console.log(
@@ -33,6 +32,7 @@ for (const filePath of modelsFiles) {
 
 // Start our app!
 const app = require('./app');
+
 app.set('port', process.env.PORT || 8888);
 const server = app.listen(app.get('port'), () => {
   console.log(`Express running → On PORT : ${server.address().port}`);
