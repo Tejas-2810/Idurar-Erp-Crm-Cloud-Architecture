@@ -14,6 +14,7 @@ services:
       - NODE_OPTIONS=--openssl-legacy-provider
       - JWT_SECRET=mern-crm
       - PUBLIC_SERVER_FILE=${PUBLIC_SERVER_FILE} 
+      - CORS_ORIGIN=${CORS_ORIGIN}
 
     command: sh -c "npm run setup && npm run dev"
 
