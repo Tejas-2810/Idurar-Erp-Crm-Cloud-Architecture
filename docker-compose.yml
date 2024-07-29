@@ -8,16 +8,14 @@ services:
     ports:
       - "8888:8888"
     environment:
-      - NODE_ENV=development
-      - DATABASE=mongodb+srv://tejascanada2810:Cloud123@cloud-cluster.tyl5stu.mongodb.net/?retryWrites=true&w=majority&appName=Cloud-Cluster
-      - PORT=8888
-      - NODE_OPTIONS=--openssl-legacy-provider
-      - JWT_SECRET=mern-crm
-      - PUBLIC_SERVER_FILE=${PUBLIC_SERVER_FILE} 
-      - CORS_ORIGIN=${CORS_ORIGIN}
-
+      NODE_ENV: "development"
+      DATABASE: "mongodb+srv://tejascanada2810:Cloud123@cloud-cluster.tyl5stu.mongodb.net/?retryWrites=true&w=majority&appName=Cloud-Cluster"
+      PORT: "8888"
+      NODE_OPTIONS: "--openssl-legacy-provider"
+      JWT_SECRET: "mern-crm"
+      PUBLIC_SERVER_FILE: "${PUBLIC_SERVER_FILE}" 
+      CORS_ORIGIN: "${CORS_ORIGIN}"
     command: sh -c "npm run setup && npm run dev"
-
     networks:
       - server-mongo
 
@@ -29,14 +27,13 @@ services:
     ports:
       - "80:3000"
     environment:
-       - NODE_ENV=development
-       - REACT_APP_API_URL=${VITE_BACKEND_SERVER}api/ 
-       - NODE_OPTIONS=--openssl-legacy-provider
-       - VITE_BACKEND_SERVER=${VITE_BACKEND_SERVER}  
-       - VITE_FILE_BASE_URL=${VITE_FILE_BASE_URL}  
-
+      NODE_ENV: "development"
+      REACT_APP_API_URL: "${VITE_BACKEND_SERVER}api/" 
+      NODE_OPTIONS: "--openssl-legacy-provider"
+      VITE_BACKEND_SERVER: "${VITE_BACKEND_SERVER}"
+      VITE_FILE_BASE_URL: "${VITE_FILE_BASE_URL}"
     depends_on:
       - backend
 
 networks:
-  server-mongo:
+  server-mongo: {}
